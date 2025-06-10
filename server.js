@@ -9,7 +9,7 @@ var EMPTY_ROOM_LOG_TIMEOUT = 3*60*1000; // 3 minutes
 var WEBSOCKET_COMPAT = true;
 
 var WebSocketServer = require("websocket").server;
-var http = require('https');
+var http = require('http');
 var parseUrl = require('url').parse;
 var fs = require('fs');
 const { verifyFromCA } = require('./verifyFromCA');
@@ -85,7 +85,7 @@ var logger = new Logger(0, null, true);
 
 var server = http.createServer(function(request, response) {
   var url = parseUrl(request.url, true);
-  var protocol = request.headers["forwarded-proto"] || "https:";
+  var protocol = request.headers["forwarded-proto"] || "http:";
   var host = request.headers.host;
   var base = protocol + "//" + host;
 
